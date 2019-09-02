@@ -48,8 +48,8 @@ class Timer
 			if(counter != timerArgs->times)
 			{
 				printf("Counter: %d\n", counter++);
-                usleep(10000*timerArgs->interval);
-                x = timerArgs->myFunc(x);
+                		usleep(1000000*timerArgs->interval);
+                		x = timerArgs->myFunc(x);
 			}
 			else
 			{
