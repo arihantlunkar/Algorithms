@@ -1,34 +1,31 @@
 #include <iostream>
-#include <pthread.h> 
-#include <unistd.h>
-#include <ctime>
-#include <cstring>
+#include <algorithm>
 #include <set>
+#include <cstring>
 using namespace std;
 
 int main() {
 	
-	const char* str = "ABDEFGABEF";
+	const char* str = "ABDEFGABEFQWERTYUIOP";
 	
 	set<char> s; 
+	int maxCount = 0;
 	
-	int maxCount = -1;
 	int j = 0;
+	int i = 0;
 	
-	for(int i=0;i<strlen(str);)
+	while(j<strlen(str))
 	{
-		if(s.find(str[i]) == s.end())
+		if(s.find(str[j]) == s.end())
 		{
-			s.insert(str[i]);
-			++i;
-			
-			if((i-j) > maxCount)
-				maxCount = i-j;
+			s.insert(str[j]);
+			j++;
+			maxCount = std::max(j-i, maxCount);
 		}
 		else
 		{
 			s.erase(str[i]);
-			++j;
+			++i;
 		}
 	}
 	
